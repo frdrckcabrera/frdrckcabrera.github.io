@@ -508,6 +508,14 @@
   .contact-link:hover .contact-text { color: var(--accent); }
   .contact-link:hover strong { color: var(--accent); }
   .contact-icon { font-size: 1.2rem; }
+  .contact-logo {
+    display: block;
+    width: 1.35rem;
+    height: 1.35rem;
+    flex: 0 0 auto;
+    object-fit: contain;
+  }
+  .contact-logo.github-logo { filter: invert(1); }
   .contact-text { font-size: 0.88rem; color: var(--muted); }
   .contact-text strong { display: block; color: var(--text); font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.05em; margin-bottom: 2px; }
 
@@ -844,14 +852,14 @@
           </div>
         </div>
         <a href="https://www.linkedin.com/in/frederick-cabrera-824a72208" target="_blank" class="contact-item contact-link">
-          <div class="contact-icon">💼</div>
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linkedin/linkedin-original.svg" alt="LinkedIn logo" class="contact-logo">
           <div class="contact-text">
             <strong>LinkedIn</strong>
             linkedin.com/in/frederick-cabrera-824a72208
           </div>
         </a>
         <a href="https://github.com/frdrckcabrera" target="_blank" class="contact-item contact-link">
-          <div class="contact-icon">🐙</div>
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" alt="GitHub logo" class="contact-logo github-logo">
           <div class="contact-text">
             <strong>GitHub</strong>
             github.com/frdrckcabrera
