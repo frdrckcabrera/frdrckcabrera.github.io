@@ -82,6 +82,11 @@
     color: var(--accent);
     letter-spacing: 0.08em;
   }
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
   .nav-links { display: flex; gap: 32px; }
   .nav-links a {
     font-family: 'DM Mono', monospace;
@@ -102,6 +107,32 @@
   }
   .nav-links a:hover { color: var(--accent); }
   .nav-links a:hover::after { transform: scaleX(1); }
+  .nav-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s, transform 0.2s;
+    cursor: none;
+  }
+  .nav-download svg {
+    width: 14px;
+    height: 14px;
+    flex: 0 0 auto;
+  }
+  .nav-download:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-1px);
+  }
 
   /* Hero */
   #hero {
@@ -607,11 +638,13 @@
   .nav-links a.active { color: var(--accent); }
 
   @media (max-width: 768px) {
-    nav { padding: 16px 24px; }
-    .nav-links { gap: 18px; }
+    nav { padding: 0; }
     #hero { grid-template-columns: 1fr; padding: 100px 24px 60px; gap: 40px; }
     .hero-visual { display: none; }
     section { padding: 60px 24px; }
+    .nav-inner { align-items: flex-start; gap: 18px; }
+    .nav-actions { flex-direction: column; align-items: flex-end; gap: 14px; }
+    .nav-links { gap: 16px; flex-wrap: wrap; justify-content: flex-end; }
     .contact-grid { grid-template-columns: 1fr; gap: 40px; }
     footer { padding: 24px; flex-direction: column; gap: 8px; text-align: center; }
     .sep { margin: 0 24px; }
@@ -626,10 +659,16 @@
 <nav>
   <div class="nav-inner">
   <div class="nav-logo">FC_DEV</div>
-  <div class="nav-links">
-    <a href="#skills">Skills</a>
-    <a href="#experience">Experience</a>
-    <a href="#contact">Contact</a>
+  <div class="nav-actions">
+    <div class="nav-links">
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="assets/frederick-cabrera-full-stack-developer-cv.pdf" class="nav-download" download>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+      Download CV
+    </a>
   </div>
   </div>
 </nav>
