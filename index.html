@@ -497,8 +497,8 @@
   }
 
   /* Experience */
-  #experience { padding-bottom: 40px; }
-  .timeline { position: relative; }
+  #experience { padding-bottom: 56px; }
+  .timeline { position: relative; max-width: 980px; }
   .timeline::before {
     content: '';
     position: absolute;
@@ -508,12 +508,13 @@
   }
   .exp-item {
     padding-left: 36px;
-    margin-bottom: 48px;
+    margin-bottom: 42px;
     position: relative;
     opacity: 0;
     transform: translateX(-20px);
     transition: opacity 0.6s ease, transform 0.6s ease;
   }
+  .exp-item:last-child { margin-bottom: 0; }
   .exp-item.visible { opacity: 1; transform: translateX(0); }
   .exp-dot {
     width: 10px; height: 10px;
@@ -533,20 +534,44 @@
   .exp-title {
     font-family: 'Syne', sans-serif;
     font-weight: 700;
-    font-size: 1.15rem;
-    margin-bottom: 2px;
+    font-size: clamp(1.05rem, 2vw, 1.24rem);
+    margin-bottom: 4px;
+    line-height: 1.25;
+  }
+  .exp-heading {
+    margin-bottom: 16px;
+  }
+  .exp-meta {
+    min-width: 0;
   }
   .exp-company {
     font-size: 0.85rem;
     color: var(--muted);
-    margin-bottom: 4px;
+    margin-bottom: 6px;
   }
   .exp-location {
     font-family: 'DM Mono', monospace;
     font-size: 0.65rem;
     color: var(--muted);
-    opacity: 0.6;
-    margin-bottom: 16px;
+    opacity: 0.72;
+  }
+  .exp-focus {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: flex-start;
+    margin-top: 12px;
+    max-width: 680px;
+  }
+  .exp-focus span {
+    border: 1px solid rgba(61,232,194,0.18);
+    border-radius: 100px;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.05em;
+    padding: 4px 9px;
+    white-space: nowrap;
   }
   .exp-bullets { list-style: none; }
   .exp-bullets li {
@@ -563,12 +588,6 @@
     color: var(--accent);
     font-size: 0.7rem;
     top: 7px;
-  }
-  .exp-bullets .exp-bullets {
-    padding-left: 16px;
-  }
-  .exp-bullets .exp-bullets li::before {
-    content: '–';
   }
   .current-badge {
     display: inline-block;
@@ -589,22 +608,81 @@
   #contact {
     padding-top: 100px;
   }
+  .contact-intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+    gap: 52px;
+    align-items: end;
+    margin-bottom: 42px;
+  }
+  .contact-copy {
+    max-width: 760px;
+  }
+  .contact-lede {
+    font-size: clamp(1.05rem, 2vw, 1.22rem);
+    color: var(--text);
+    line-height: 1.75;
+    margin-bottom: 18px;
+  }
+  .contact-note {
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+  .availability-card {
+    background: linear-gradient(135deg, rgba(61,232,194,0.12), rgba(247,183,51,0.08));
+    border: 1px solid rgba(61,232,194,0.22);
+    border-radius: 8px;
+    padding: 22px;
+  }
+  .availability-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .availability-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.08rem;
+    line-height: 1.35;
+    margin-bottom: 10px;
+  }
+  .availability-copy {
+    color: var(--muted);
+    font-size: 0.88rem;
+    line-height: 1.65;
+  }
   .contact-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 0.86fr);
+    gap: 34px;
     align-items: start;
   }
-  .contact-info { display: flex; flex-direction: column; gap: 20px; }
+  .contact-panel {
+    background: rgba(17,24,39,0.58);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+  }
+  .contact-panel-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 18px;
+  }
+  .contact-info { display: flex; flex-direction: column; gap: 14px; }
   .contact-item {
     display: flex; align-items: center; gap: 16px;
-    background: var(--surface);
+    background: rgba(10,14,23,0.42);
     border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 18px 20px;
-    transition: border-color 0.2s;
+    border-radius: 8px;
+    padding: 16px 18px;
+    transition: border-color 0.2s, transform 0.2s, background 0.2s;
   }
-  .contact-item:hover { border-color: var(--accent); }
+  .contact-item:hover { border-color: var(--accent); background: rgba(61,232,194,0.05); transform: translateY(-1px); }
   .contact-link {
     text-decoration: none;
     color: var(--text);
@@ -612,7 +690,20 @@
   }
   .contact-link:hover .contact-text { color: var(--accent); }
   .contact-link:hover strong { color: var(--accent); }
-  .contact-icon { font-size: 1.2rem; }
+  .contact-icon {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: var(--surface2);
+    color: var(--accent);
+    flex: 0 0 auto;
+  }
+  .contact-icon svg {
+    width: 17px;
+    height: 17px;
+  }
   .contact-logo {
     display: block;
     width: 1.35rem;
@@ -621,21 +712,15 @@
     object-fit: contain;
   }
   .contact-logo.github-logo { filter: invert(1); }
-  .contact-text { font-size: 0.88rem; color: var(--muted); }
+  .contact-text { font-size: 0.88rem; color: var(--muted); min-width: 0; overflow-wrap: anywhere; }
   .contact-text strong { display: block; color: var(--text); font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.05em; margin-bottom: 2px; }
 
-  .about-text {
-    font-size: 1.05rem;
-    color: var(--muted);
-    line-height: 1.9;
-    margin-bottom: 24px;
-  }
   .edu-list { display: flex; flex-direction: column; gap: 16px; }
   .edu-item {
-    background: var(--surface);
+    background: rgba(10,14,23,0.42);
     border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 18px 20px;
+    border-radius: 8px;
+    padding: 16px 18px;
     border-left: 3px solid var(--accent);
   }
   .edu-school {
@@ -723,7 +808,10 @@
     .tech-heading { grid-template-columns: 1fr; gap: 18px; margin-bottom: 34px; }
     .stack-group-header { align-items: flex-start; flex-direction: column; gap: 4px; }
     .skills-grid, .tools-grid { grid-template-columns: 1fr; }
+    .exp-focus { justify-content: flex-start; max-width: none; }
+    .contact-intro { grid-template-columns: 1fr; gap: 28px; margin-bottom: 32px; }
     .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    .contact-panel { padding: 20px; }
     footer { padding: 24px; flex-direction: column; gap: 8px; text-align: center; }
     .sep { margin: 0 24px; }
   }
@@ -896,9 +984,19 @@
     <div class="exp-item">
       <div class="exp-dot"></div>
       <div class="exp-period">April 2024 — Present</div>
-      <div class="exp-title">Full Stack Developer <span class="current-badge">Current</span></div>
-      <div class="exp-company">Flexilabs</div>
-      <div class="exp-location">📍 Unit C 26th Floor Trafalgar Plaza, Makati City</div>
+      <div class="exp-heading">
+        <div class="exp-meta">
+          <div class="exp-title">Full Stack Developer <span class="current-badge">Current</span></div>
+          <div class="exp-company">Flexilabs</div>
+          <div class="exp-location">Makati City, Philippines</div>
+        </div>
+        <div class="exp-focus" aria-label="Core responsibilities">
+          <span>React + TypeScript</span>
+          <span>PHP</span>
+          <span>PostgreSQL</span>
+          <span>Scrum Lead</span>
+        </div>
+      </div>
       <ul class="exp-bullets">
         <li>Develop and maintain scalable web applications using React.js (TypeScript) and PHP, following SOLID principles for maintainability</li>
         <li>Optimize and profile PostgreSQL databases, improving query performance and handling large datasets efficiently</li>
@@ -911,9 +1009,19 @@
     <div class="exp-item">
       <div class="exp-dot"></div>
       <div class="exp-period">July 2018 — April 2024</div>
-      <div class="exp-title">Web Development Specialist Senior</div>
-      <div class="exp-company">Republic Biscuit Corporation</div>
-      <div class="exp-location">📍 Novaliches, Quezon City</div>
+      <div class="exp-heading">
+        <div class="exp-meta">
+          <div class="exp-title">Web Development Specialist Senior</div>
+          <div class="exp-company">Republic Biscuit Corporation</div>
+          <div class="exp-location">Quezon City, Philippines</div>
+        </div>
+        <div class="exp-focus" aria-label="Core responsibilities">
+          <span>Laravel</span>
+          <span>Vue</span>
+          <span>REST APIs</span>
+          <span>PHPUnit</span>
+        </div>
+      </div>
       <ul class="exp-bullets">
         <li>Developed and maintained enterprise-level web applications using Laravel and Vue.js (2 & 3)</li>
         <li>Designed and optimized relational database structures, including indexes and constraints, improving query efficiency</li>
@@ -927,9 +1035,19 @@
     <div class="exp-item">
       <div class="exp-dot"></div>
       <div class="exp-period">Nov 2016 — June 2018</div>
-      <div class="exp-title">Web Developer</div>
-      <div class="exp-company">Advanced Primetech Solution Inc.</div>
-      <div class="exp-location">📍 East Avenue, Quezon City</div>
+      <div class="exp-heading">
+        <div class="exp-meta">
+          <div class="exp-title">Web Developer</div>
+          <div class="exp-company">Advanced Primetech Solution Inc.</div>
+          <div class="exp-location">Quezon City, Philippines</div>
+        </div>
+        <div class="exp-focus" aria-label="Core responsibilities">
+          <span>Laravel 4</span>
+          <span>MySQL</span>
+          <span>Bootstrap</span>
+          <span>APIs</span>
+        </div>
+      </div>
       <ul class="exp-bullets">
         <li>Built web applications using Laravel 4 (monolithic architecture)</li>
         <li>Developed REST APIs with authentication mechanisms</li>
@@ -941,24 +1059,23 @@
     <div class="exp-item">
       <div class="exp-dot"></div>
       <div class="exp-period">Aug 2015 — Aug 2016</div>
-      <div class="exp-title">Software Engineer</div>
-      <div class="exp-company">E-secure Technologie Inc.</div>
-      <div class="exp-location">📍 Banawe, Quezon City</div>
+      <div class="exp-heading">
+        <div class="exp-meta">
+          <div class="exp-title">Software Engineer</div>
+          <div class="exp-company">E-secure Technologie Inc.</div>
+          <div class="exp-location">Quezon City, Philippines</div>
+        </div>
+        <div class="exp-focus" aria-label="Core responsibilities">
+          <span>C#</span>
+          <span>Hardware SDKs</span>
+          <span>Access control</span>
+          <span>Networking</span>
+        </div>
+      </div>
       <ul class="exp-bullets">
         <li>Developed Windows applications using C# for integrating hardware systems</li>
-        <li>Integrated and configured devices such as:
-          <ul class="exp-bullets">
-            <li>Card readers</li>
-            <li>CCTV systems</li>
-            <li>Car park barriers</li>
-            <li>GPS trackers</li>
-            <li>Biometric readers</li>
-            <li>Door access controllers</li>
-            <li>Turnstiles</li>
-            <li>Intercom systems</li>
-          </ul>
-        </li>
-        <li>Handled network setup and troubleshooting for hardwaresoftware integrations</li>
+        <li>Integrated card readers, CCTV systems, car park barriers, GPS trackers, biometric readers, door access controllers, turnstiles, and intercom systems</li>
+        <li>Handled network setup and troubleshooting for hardware/software integrations</li>
         <li>Worked closely with SDKs for customized system implementations</li>
       </ul>
     </div>
@@ -970,55 +1087,62 @@
 
 <!-- CONTACT -->
 <section id="contact">
-  <div class="section-label">// let's connect</div>
-  <h2 class="section-title">Get In Touch</h2>
-  <p class="about-text">
-    I'm a full-stack developer with a decade of experience building production web applications across React, TypeScript, Vue, PHP, and Laravel — backed by deep database expertise in PostgreSQL, MySQL, and MariaDB.
-  </p>
-  <p class="about-text">
-    I've shipped software with distributed teams across Australia, India, and China, including time spent as Scrum Lead — which gave me a sharper appreciation for how engineering decisions ripple into delivery, communication, and trust across time zones.
-  </p>
-  <p class="about-text">
-    My engineering foundation is built on SOLID principles, automated testing with PHPUnit, and SQL performance profiling. That discipline translates into applications that are maintainable, performant, and reliable under real production load — not just on a green-field demo.
-  </p>
-  <p class="about-text">
-    I've worked across the stack and across paradigms: integrating security hardware via C#, architecting modern TypeScript front-ends with clean component design, tuning slow queries that no one else wanted to touch, and modernizing PHP codebases without breaking the things customers actually rely on.
-  </p>
-  <p class="about-text" style="margin-bottom: 40px;">
-    I'm always open to connecting with engineering teams building products that value clean code, thoughtful database design, and engineering rigor. If that sounds like the team you're building, let's talk.
-  </p>
+  <div class="contact-intro">
+    <div class="contact-copy">
+      <div class="section-label">// let's connect</div>
+      <h2 class="section-title">Get In Touch</h2>
+      <p class="contact-lede">
+        I build dependable web applications across frontend, backend, and data-heavy workflows, with a practical focus on maintainability, performance, and delivery clarity.
+      </p>
+      <p class="contact-note">
+        Open to engineering teams that care about clean code, thoughtful database design, and product work that has to hold up beyond the demo.
+      </p>
+    </div>
+    <div class="availability-card">
+      <div class="availability-label">Availability</div>
+      <div class="availability-title">Available for full-stack roles, product engineering teams, and technical collaboration.</div>
+      <p class="availability-copy">Best fit: React or Vue frontends, PHP/Laravel backends, and database-sensitive production systems.</p>
+    </div>
+  </div>
   <div class="contact-grid">
-    <div>
+    <div class="contact-panel">
+      <div class="contact-panel-title">Contact Details</div>
       <div class="contact-info">
-        <div class="contact-item">
-          <div class="contact-icon">📧</div>
+        <a href="mailto:cabrera.frederick17@gmail.com" class="contact-item contact-link">
+          <div class="contact-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          </div>
           <div class="contact-text">
             <strong>Email</strong>
             cabrera.frederick17@gmail.com
           </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-icon">📞</div>
+        </a>
+        <a href="tel:+639300307092" class="contact-item contact-link">
+          <div class="contact-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.2 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.32 1.77.57 2.6a2 2 0 0 1-.45 2.11L7.96 9.7a16 16 0 0 0 6.34 6.34l1.27-1.27a2 2 0 0 1 2.11-.45c.83.25 1.7.45 2.6.57A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
           <div class="contact-text">
             <strong>Phone</strong>
             +63 930-030-7092
           </div>
-        </div>
+        </a>
         <div class="contact-item">
-          <div class="contact-icon">📍</div>
+          <div class="contact-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.99-5.54 10.2-7.4 11.8a1 1 0 0 1-1.2 0C9.54 20.2 4 14.99 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
           <div class="contact-text">
             <strong>Location</strong>
-            The North Grove Condo, Hemlock Bldg. Unit 306, Camarin Road, Caloocan City, Metro Manila
+            Caloocan City, Metro Manila, Philippines
           </div>
         </div>
-        <a href="https://www.linkedin.com/in/frederick-cabrera-824a72208" target="_blank" class="contact-item contact-link">
+        <a href="https://www.linkedin.com/in/frederick-cabrera-824a72208" target="_blank" rel="noopener noreferrer" class="contact-item contact-link">
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linkedin/linkedin-original.svg" alt="LinkedIn logo" class="contact-logo">
           <div class="contact-text">
             <strong>LinkedIn</strong>
             linkedin.com/in/frederick-cabrera-824a72208
           </div>
         </a>
-        <a href="https://github.com/frdrckcabrera" target="_blank" class="contact-item contact-link">
+        <a href="https://github.com/frdrckcabrera" target="_blank" rel="noopener noreferrer" class="contact-item contact-link">
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" alt="GitHub logo" class="contact-logo github-logo">
           <div class="contact-text">
             <strong>GitHub</strong>
@@ -1027,8 +1151,8 @@
         </a>
       </div>
     </div>
-    <div>
-      <div class="section-label" style="margin-bottom:16px;">// education</div>
+    <div class="contact-panel">
+      <div class="contact-panel-title">Education</div>
       <div class="edu-list">
         <div class="edu-item">
           <div class="edu-school">Polytechnic University of the Philippines</div>
