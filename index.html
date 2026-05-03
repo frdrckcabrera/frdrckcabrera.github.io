@@ -877,19 +877,19 @@
       <div class="hero-card-title">Building dependable web apps across frontend, backend, and data.</div>
       <div class="hc-stats">
         <div class="stat">
-          <div class="stat-num">10</div>
+          <div class="stat-num" data-stat="years">10</div>
           <div class="stat-label">Years exp.</div>
         </div>
         <div class="stat">
-          <div class="stat-num">4</div>
+          <div class="stat-num" data-stat="companies">4</div>
           <div class="stat-label">Companies</div>
         </div>
         <div class="stat">
-          <div class="stat-num">10+</div>
+          <div class="stat-num" data-stat="tech">10+</div>
           <div class="stat-label">Tech stacks</div>
         </div>
         <div class="stat">
-          <div class="stat-num">2</div>
+          <div class="stat-num" data-stat="languages">2</div>
           <div class="stat-label">Languages</div>
         </div>
       </div>
@@ -1190,6 +1190,77 @@
 </footer>
 
 <script>
+  const monthIndex = new Map([
+    ['jan', 0], ['january', 0],
+    ['feb', 1], ['february', 1],
+    ['mar', 2], ['march', 2],
+    ['apr', 3], ['april', 3],
+    ['may', 4],
+    ['jun', 5], ['june', 5],
+    ['jul', 6], ['july', 6],
+    ['aug', 7], ['august', 7],
+    ['sep', 8], ['sept', 8], ['september', 8],
+    ['oct', 9], ['october', 9],
+    ['nov', 10], ['november', 10],
+    ['dec', 11], ['december', 11]
+  ]);
+
+  function parsePeriodDate(value, fallbackDate = new Date()) {
+    if (!value || /present/i.test(value)) return fallbackDate;
+
+    const match = value.trim().match(/^([A-Za-z]+)\s+(\d{4})$/);
+    if (!match) return null;
+
+    const month = monthIndex.get(match[1].toLowerCase());
+    if (month === undefined) return null;
+
+    return new Date(Number(match[2]), month, 1);
+  }
+
+  function fullYearsBetween(startDate, endDate) {
+    let years = endDate.getFullYear() - startDate.getFullYear();
+    const hasNotReachedAnniversary =
+      endDate.getMonth() < startDate.getMonth() ||
+      (endDate.getMonth() === startDate.getMonth() && endDate.getDate() < startDate.getDate());
+
+    return hasNotReachedAnniversary ? years - 1 : years;
+  }
+
+  function deriveHeroStats() {
+    const statTargets = document.querySelectorAll('[data-stat]');
+    if (!statTargets.length) return;
+
+    const today = new Date();
+    const periods = [...document.querySelectorAll('.exp-period')]
+      .flatMap(period => period.textContent.split(/\s*(?:—|–|-|â€”)\s*/))
+      .map(part => parsePeriodDate(part, today))
+      .filter(Boolean);
+
+    const earliestRoleDate = periods.length
+      ? new Date(Math.min(...periods.map(date => date.getTime())))
+      : null;
+
+    const stats = {
+      years: earliestRoleDate ? fullYearsBetween(earliestRoleDate, today) : null,
+      companies: new Set([...document.querySelectorAll('.exp-company')]
+        .map(company => company.textContent.trim())
+        .filter(Boolean)).size,
+      tech: new Set([...document.querySelectorAll('#skills .skill-name')]
+        .map(skill => skill.textContent.trim())
+        .filter(Boolean)).size,
+      languages: document.querySelectorAll('.lang-chip').length
+    };
+
+    statTargets.forEach(target => {
+      const value = stats[target.dataset.stat];
+      if (Number.isFinite(value) && value > 0) {
+        target.textContent = value;
+      }
+    });
+  }
+
+  deriveHeroStats();
+
   // Cursor
   const cursor = document.getElementById('cursor');
   const ring = document.getElementById('cursor-ring');
