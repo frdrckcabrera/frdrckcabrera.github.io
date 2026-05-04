@@ -1896,17 +1896,32 @@
   document.querySelectorAll('.exp-item').forEach(el => observer.observe(el));
 
   // Active nav
-  const sections = document.querySelectorAll('section[id], #hero');
-  const navLinks = document.querySelectorAll('.nav-links a');
-  window.addEventListener('scroll', () => {
+  const navLinks = [...document.querySelectorAll('.nav-links a')];
+  const navSections = navLinks
+    .map(link => document.querySelector(link.getAttribute('href')))
+    .filter(Boolean);
+
+  function updateActiveNav() {
+    const scrollPosition = window.scrollY + 120;
+    const isAtPageBottom =
+      window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
     let current = '';
-    sections.forEach(s => {
-      if (window.scrollY >= s.offsetTop - 100) current = s.id;
+
+    navSections.forEach(section => {
+      if (scrollPosition >= section.offsetTop) current = section.id;
     });
-    navLinks.forEach(a => {
-      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+
+    if (isAtPageBottom && navSections.length) {
+      current = navSections[navSections.length - 1].id;
+    }
+
+    navLinks.forEach(link => {
+      link.classList.toggle('active', link.getAttribute('href') === '#' + current);
     });
-  });
+  }
+
+  window.addEventListener('scroll', updateActiveNav, { passive: true });
+  updateActiveNav();
 
   // Skill hover particles
   document.querySelectorAll('.skill-item').forEach(item => {
