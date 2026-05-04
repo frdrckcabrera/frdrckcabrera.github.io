@@ -33,14 +33,3 @@ brand icon paths.
 
 Brand icons are trademarks of their respective owners and are used only to
 represent the company, product, or service to which they refer.
-
-## Product Logos
-
-Claude Code is represented with the Claude logo/symbol by Anthropic. Codex is
-represented with the OpenAI logo/symbol. These marks are used only to identify
-the related products and services.
-
-- Claude: https://claude.ai/
-- Claude Code docs: https://code.claude.com/docs
-- OpenAI brand guidelines: https://openai.com/brand/
-- Codex: https://openai.com/codex/
