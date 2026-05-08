@@ -517,6 +517,42 @@
     margin: 0;
     object-fit: contain;
   }
+  .paired-skill-logo {
+    position: relative;
+    display: block;
+    width: 2.35rem;
+    height: 2.2rem;
+  }
+  .paired-skill-logo .logo-badge {
+    position: absolute;
+    display: grid;
+    place-items: center;
+    width: 1.55rem;
+    height: 1.55rem;
+    background: var(--surface2);
+    border: 1px solid rgba(232,237,245,0.12);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.24);
+  }
+  .paired-skill-logo .logo-badge:first-child {
+    left: 0;
+    top: 0;
+    z-index: 2;
+  }
+  .paired-skill-logo .logo-badge:last-child {
+    right: 0;
+    bottom: 0;
+  }
+  .paired-skill-logo img {
+    display: block;
+    width: 1.08rem;
+    height: 1.08rem;
+    object-fit: contain;
+  }
+  .paired-skill-logo .vuex-logo {
+    width: 1.16rem;
+    height: 1.16rem;
+  }
   .official-logo-wrap {
     background: #fff;
   }
@@ -1442,14 +1478,14 @@
   <div class="section-label">Recruiter snapshot</div>
   <div class="impact-heading">
     <h2 class="section-title">Where I Add Value</h2>
-    <p class="impact-summary">A focused view of the work I can contribute to international product and engineering teams.</p>
+    <p class="impact-summary">A senior full-stack profile for teams that need maintainable product delivery, data-heavy workflows, and practical technical ownership across distributed engineering teams.</p>
   </div>
   <div class="impact-grid">
     <article class="impact-card">
       <div>
         <div class="impact-kicker">Product engineering</div>
-        <h3 class="impact-title">Production web applications that stay maintainable after launch.</h3>
-        <p class="impact-copy">Comfortable owning interface work, backend behavior, integrations, and the practical details needed to keep long-lived applications understandable.</p>
+        <h3 class="impact-title">End-to-end ownership of production web applications that stay maintainable after launch.</h3>
+        <p class="impact-copy">Owns frontend behavior, backend implementation, integrations, and the practical engineering details behind long-lived React/Vue and PHP/Laravel systems.</p>
       </div>
       <div class="impact-tags">
         <span>React</span>
@@ -1461,21 +1497,22 @@
     <article class="impact-card">
       <div>
         <div class="impact-kicker">Data-heavy systems</div>
-        <h3 class="impact-title">Database-sensitive workflows with attention to structure and performance.</h3>
-        <p class="impact-copy">Experienced with relational schemas, query profiling, indexing, constraints, and production data flows where backend decisions affect user experience.</p>
+        <h3 class="impact-title">Performance-minded database and reporting work at production scale.</h3>
+        <p class="impact-copy">Designs schemas, tunes SQL, and builds async reporting, caching, and data workflows where backend decisions directly affect user experience and delivery risk.</p>
       </div>
       <div class="impact-tags">
         <span>PostgreSQL</span>
         <span>MySQL</span>
         <span>MariaDB</span>
+        <span>Redis</span>
         <span>SQL tuning</span>
       </div>
     </article>
     <article class="impact-card">
       <div>
         <div class="impact-kicker">Distributed delivery</div>
-        <h3 class="impact-title">Cross-functional collaboration with remote and international teams.</h3>
-        <p class="impact-copy">Able to work across time zones, clarify requirements, lead Scrum routines, document decisions, and keep delivery moving with practical communication.</p>
+        <h3 class="impact-title">Practical delivery leadership across remote and international teams.</h3>
+        <p class="impact-copy">Clarifies requirements, documents decisions, leads Scrum routines, and keeps cross-functional delivery moving across distributed teams and stakeholders.</p>
       </div>
       <div class="impact-tags">
         <span>Scrum lead</span>
@@ -1505,6 +1542,7 @@
         <div class="skill-item"><div class="skill-icon-wrap"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" alt="React JS logo" class="skill-logo"></div><div><div class="skill-name">React JS</div><div class="skill-meta">Library</div></div></div>
         <div class="skill-item"><div class="skill-icon-wrap"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" alt="TypeScript logo" class="skill-logo"></div><div><div class="skill-name">TypeScript</div><div class="skill-meta">Language</div></div></div>
         <div class="skill-item"><div class="skill-icon-wrap"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg" alt="Vue JS logo" class="skill-logo"></div><div><div class="skill-name">Vue JS</div><div class="skill-meta">Framework</div></div></div>
+        <div class="skill-item"><div class="skill-icon-wrap"><span class="paired-skill-logo" role="img" aria-label="Redux and Vuex logos"><span class="logo-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redux/redux-original.svg" alt=""></span><span class="logo-badge"><img src="https://cdn.jsdelivr.net/gh/vuejs/vuex@main/docs/public/logo.png" alt="" class="vuex-logo"></span></span></div><div><div class="skill-name">Redux / Vuex</div><div class="skill-meta">State management</div></div></div>
         <div class="skill-item"><div class="skill-icon-wrap"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS logo" class="skill-logo"></div><div><div class="skill-name">Tailwind CSS</div><div class="skill-meta">Styling</div></div></div>
       </div>
     </div>
@@ -1529,6 +1567,7 @@
       <div class="skills-grid">
         <div class="skill-item"><div class="skill-icon-wrap"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" alt="PostgreSQL logo" class="skill-logo"></div><div><div class="skill-name">PostgreSQL</div><div class="skill-meta">Database</div></div></div>
         <div class="skill-item"><div class="skill-icon-wrap"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" alt="MySQL logo" class="skill-logo"></div><div><div class="skill-name">MySQL</div><div class="skill-meta">Database</div></div></div>
+        <div class="skill-item"><div class="skill-icon-wrap"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg" alt="Redis logo" class="skill-logo"></div><div><div class="skill-name">Redis</div><div class="skill-meta">Cache / Queue</div></div></div>
         <div class="skill-item"><div class="skill-icon-wrap"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apache/apache-original.svg" alt="Apache logo" class="skill-logo"></div><div><div class="skill-name">Apache</div><div class="skill-meta">Web server</div></div></div>
         <div class="skill-item"><div class="skill-icon-wrap"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nginx/nginx-original.svg" alt="Nginx logo" class="skill-logo"></div><div><div class="skill-name">Nginx</div><div class="skill-meta">Web server</div></div></div>
       </div>
@@ -1831,6 +1870,7 @@
         .filter(Boolean)).size,
       tech: new Set([...document.querySelectorAll('#skills .skill-name')]
         .map(skill => skill.textContent.trim())
+        .flatMap(skill => skill.split(/\s*\/\s*/))
         .filter(Boolean)).size,
       regions: teamRegionCount
     };

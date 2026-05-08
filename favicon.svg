@@ -1,9 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="12" fill="#0a0e17"/>
-  <path d="M13 43V21c0-3.3 2.7-6 6-6h26c3.3 0 6 2.7 6 6v22c0 3.3-2.7 6-6 6H19c-3.3 0-6-2.7-6-6Z" fill="#111827" stroke="#3de8c2" stroke-width="3"/>
-  <path d="M13 24h38" stroke="#3de8c2" stroke-width="3"/>
-  <circle cx="21" cy="20" r="2" fill="#3de8c2"/>
-  <circle cx="28" cy="20" r="2" fill="#f7b733"/>
-  <path d="m28 29-7 5 7 5M36 29l7 5-7 5" fill="none" stroke="#3de8c2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="m34 27-4 14" stroke="#f7b733" stroke-width="4" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="badge" x1="13" y1="10" x2="51" y2="56" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1a2236"/>
+      <stop offset=".58" stop-color="#111827"/>
+      <stop offset="1" stop-color="#0a0e17"/>
+    </linearGradient>
+    <linearGradient id="edge" x1="9" y1="10" x2="55" y2="55" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3de8c2"/>
+      <stop offset="1" stop-color="#f7b733"/>
+    </linearGradient>
+  </defs>
+  <path d="M32 5.5 56 19.4v25.2L32 58.5 8 44.6V19.4L32 5.5Z" fill="url(#badge)" stroke="url(#edge)" stroke-width="2.6" stroke-linejoin="round"/>
+  <path d="M32 5.5 56 19.4 32 33.2 8 19.4 32 5.5Z" fill="#3de8c2" opacity=".12"/>
+  <path d="M32 33.2 56 19.4v25.2L32 58.5V33.2Z" fill="#3de8c2" opacity=".08"/>
+  <path d="M8 36.4 32 50.3l24-13.9v8.2L32 58.5 8 44.6v-8.2Z" fill="#f7b733" opacity=".2"/>
+  <path d="M19 18h29v8.4H29.6v6.9h15.7v8.2H29.6V53H19V18Z" fill="#071018" opacity=".35"/>
+  <path d="M18 17h29v8.4H28.6v6.9h15.7v8.2H28.6V52H18V17Z" fill="#e8edf5"/>
+  <path d="M28.6 32.3h15.7v8.2H28.6v-8.2Z" fill="#f7b733"/>
 </svg>
