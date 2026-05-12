@@ -574,13 +574,13 @@
   #projects { padding-top: 72px; }
   .project-list {
     display: grid;
-    gap: 24px;
+    gap: 18px;
   }
   .project-showcase {
     background: rgba(17,24,39,0.72);
     border: 1px solid var(--border);
     border-radius: 8px;
-    padding: clamp(24px, 4vw, 38px);
+    padding: clamp(20px, 3vw, 30px);
     position: relative;
     overflow: hidden;
   }
@@ -593,18 +593,19 @@
   }
   .project-heading {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(240px, 360px);
-    gap: 34px;
+    grid-template-columns: minmax(0, 1fr) minmax(220px, 320px);
+    gap: 24px;
     align-items: start;
-    margin-bottom: 34px;
+    margin-bottom: 24px;
   }
   .project-heading .section-title {
-    margin-bottom: 18px;
+    font-size: clamp(1.55rem, 3vw, 2.35rem);
+    margin-bottom: 12px;
   }
   .project-lede {
     color: var(--muted);
-    font-size: 0.98rem;
-    line-height: 1.75;
+    font-size: 0.92rem;
+    line-height: 1.65;
     max-width: 70ch;
   }
   .project-stats {
@@ -615,15 +616,15 @@
     background: var(--surface2);
     border: 1px solid rgba(232,237,245,0.06);
     border-radius: 8px;
-    padding: 14px;
+    padding: 12px;
   }
   .project-stat strong {
     display: block;
     color: var(--accent);
     font-family: 'Syne', sans-serif;
-    font-size: 1.3rem;
+    font-size: 1.12rem;
     line-height: 1;
-    margin-bottom: 6px;
+    margin-bottom: 5px;
   }
   .project-stat span {
     color: var(--muted);
@@ -635,26 +636,26 @@
   .project-detail-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 24px;
-    margin-top: 30px;
+    gap: 18px;
+    margin-top: 22px;
   }
   .project-detail h3 {
     font-family: 'Syne', sans-serif;
-    font-size: 1rem;
+    font-size: 0.92rem;
     font-weight: 700;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
   }
   .project-detail ul {
     list-style: none;
     display: grid;
-    gap: 10px;
+    gap: 7px;
   }
   .project-detail li {
     color: var(--muted);
-    font-size: 0.9rem;
-    line-height: 1.65;
+    font-size: 0.84rem;
+    line-height: 1.55;
     position: relative;
-    padding-left: 18px;
+    padding-left: 16px;
   }
   .project-detail li::before {
     content: '';
@@ -670,9 +671,10 @@
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    margin-top: 28px;
+    margin-top: 20px;
   }
-  .project-tags span {
+  .project-tags span,
+  .project-tags a {
     border: 1px solid rgba(61,232,194,0.18);
     border-radius: 100px;
     color: var(--muted);
@@ -680,7 +682,12 @@
     font-size: 0.62rem;
     letter-spacing: 0.05em;
     padding: 4px 9px;
+    text-decoration: none;
     white-space: nowrap;
+  }
+  .project-tags a:hover {
+    border-color: var(--accent);
+    color: var(--accent);
   }
 
   /* Recruiter snapshot */
@@ -1468,6 +1475,62 @@
         <span>Query optimization</span>
       </div>
     </article>
+
+    <article class="project-showcase">
+      <div class="project-heading">
+        <div>
+          <h2 class="section-title">Sales Reporting and Data Processing Platform</h2>
+          <p class="project-lede">
+            Built a portfolio-grade sales operations platform to demonstrate backend experience with a Node.js API and Python data-processing worker. The project models authenticated report workflows where users browse operational data, request asynchronous CSV reports, track job status, and download completed exports.
+          </p>
+        </div>
+        <div class="project-stats" aria-label="Project scale">
+          <div class="project-stat">
+            <strong>Node.js</strong>
+            <span>API boundary</span>
+          </div>
+          <div class="project-stat">
+            <strong>Python</strong>
+            <span>Report worker</span>
+          </div>
+          <div class="project-stat">
+            <strong>Docker</strong>
+            <span>Local runtime</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-detail-grid">
+        <div class="project-detail">
+          <h3>My Contribution</h3>
+          <ul>
+            <li>Designed the vertical slice around a React and TypeScript web app, Node.js API layer, PostgreSQL data store, Redis Streams queue, and Python FastAPI worker.</li>
+            <li>Implemented the backend boundary for authentication, role-based access, REST endpoints, pagination, and report job creation.</li>
+            <li>Built the Python worker flow for consuming report jobs, running PostgreSQL aggregation queries, generating CSV exports, and updating job status.</li>
+          </ul>
+        </div>
+        <div class="project-detail">
+          <h3>Technical Scope</h3>
+          <ul>
+            <li>Uses direct SQL, schema constraints, indexes, report metadata, and export metadata to make reporting behavior visible and tunable.</li>
+            <li>Coordinates asynchronous work through Redis Streams so report generation stays separate from the user-facing API contract.</li>
+            <li>Includes Docker Compose setup, seeded credentials, health endpoints, and focused tests for API password verification and worker CSV formatting.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="project-tags">
+        <span>React</span>
+        <span>TypeScript</span>
+        <span>Node.js</span>
+        <span>NestJS</span>
+        <span>Python</span>
+        <span>FastAPI</span>
+        <span>PostgreSQL</span>
+        <span>Redis Streams</span>
+        <span>Docker</span>
+        <span>CSV export</span>
+        <a href="https://github.com/frdrckcabrera/react-nodejs-python" target="_blank" rel="noopener noreferrer">GitHub repo</a>
+      </div>
+    </article>
   </div>
 </section>
 
@@ -1556,6 +1619,8 @@
         <div class="skill-item"><div class="skill-icon-wrap"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg" alt="PHP logo" class="skill-logo"></div><div><div class="skill-name">PHP</div><div class="skill-meta">Language</div></div></div>
         <div class="skill-item"><div class="skill-icon-wrap"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg" alt="Laravel logo" class="skill-logo"></div><div><div class="skill-name">Laravel</div><div class="skill-meta">Framework</div></div></div>
         <div class="skill-item"><div class="skill-icon-wrap"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg" alt="C# logo" class="skill-logo"></div><div><div class="skill-name">C#</div><div class="skill-meta">Language</div></div></div>
+        <div class="skill-item"><div class="skill-icon-wrap"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python logo" class="skill-logo"></div><div><div class="skill-name">Python</div><div class="skill-meta">Language</div></div></div>
+        <div class="skill-item"><div class="skill-icon-wrap"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" alt="Node.js logo" class="skill-logo"></div><div><div class="skill-name">Node.js</div><div class="skill-meta">Runtime</div></div></div>
       </div>
     </div>
 
