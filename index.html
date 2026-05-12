@@ -378,6 +378,23 @@
     font-family: 'DM Mono', monospace;
     letter-spacing: 0.05em;
   }
+  .hc-languages { display: block; }
+  .hc-stack-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 8px;
+    font-size: 0.65rem;
+    font-family: 'DM Mono', monospace;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .hc-stack-label svg {
+    width: 14px;
+    height: 14px;
+    flex: 0 0 auto;
+  }
   .hc-stack { display: flex; gap: 8px; flex-wrap: wrap; }
   .stack-chip {
     padding: 4px 12px;
@@ -1348,11 +1365,15 @@
           <div class="stat-label">Team regions</div>
         </div>
       </div>
-      <div class="hc-stack">
-        <div class="stack-chip">React</div>
-        <div class="stack-chip">Vue</div>
-        <div class="stack-chip">PHP/Laravel</div>
-        <div class="stack-chip">PostgreSQL</div>
+      <div class="hc-languages" aria-labelledby="hero-languages-label">
+        <div class="hc-stack-label" id="hero-languages-label">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <span>Languages</span>
+        </div>
+        <div class="hc-stack">
+          <div class="stack-chip">Filipino</div>
+          <div class="stack-chip">English</div>
+        </div>
       </div>
     </div>
   </div>
